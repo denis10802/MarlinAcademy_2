@@ -31,4 +31,22 @@ return [
 
     ],
 
+'links'=>[
+    [
+       'title'=>'Главная',
+        'href'=> '#',
+        'is_link'=>true,
+    ],
+    [
+       'title'=>'PHP',
+        'href'=> '#',
+        'is_link'=>true,
+    ],
+    [
+       'title'=>'Главная',
+        'href'=> '#',
+        'is_link'=>false,
+    ],
+]
+
 ];

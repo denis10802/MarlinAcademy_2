@@ -1,3 +1,11 @@
+
+
+<?php
+$data = require ('data.php');
+$link = $data['links'];
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,9 +41,13 @@
                     <div class="panel-container show">
                         <div class="panel-content">
                             <ol class="breadcrumb page-breadcrumb">
-                                <li class="breadcrumb-item"><a href="#">Главная</a></li>
-                                <li class="breadcrumb-item"><a href="#">PHP</a></li>
-                                <li class="breadcrumb-item active">Функции</li>
+                                <?foreach ($link as $links){?>
+                                    <?if($links['is_link']){?>
+                                <li class="breadcrumb-item"><a href="<?=$links['href']?>"><?=$links['title']?></a></li>
+                                <?}else{?>
+                                        <li class="breadcrumb-item active"><?=$links['title']?></li>
+                                     <?}?>
+                                <?}?>
                             </ol>
                         </div>
                     </div>
