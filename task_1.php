@@ -1,3 +1,11 @@
+<?php
+$data = require ('data.php');
+$item = $data['group-item'];
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,18 +52,12 @@
                                         </div>
                                     </div>
                                     <ul id="js-list-msg" class="list-group px-2 pb-2 js-list-filter">
+                                        <?foreach ($item as $items) {?>
+
                                         <li class="list-group-item">
-                                            <span data-filter-tags="reports file">Reports</span>
+                                            <span data-filter-tags="<?=$items['tag']?>"><?=$items['title']?></span>
                                         </li>
-                                        <li class="list-group-item">
-                                            <span data-filter-tags="analytics graphs">Analytics</span>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <span data-filter-tags="export download">Export</span>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <span data-filter-tags="storage">Storage</span>
-                                        </li>
+                                        <?}?>
                                     </ul>
                                     <div class="filter-message js-filter-message mt-0 fs-sm"></div>
                                 </div>
