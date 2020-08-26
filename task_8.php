@@ -1,3 +1,10 @@
+<?php
+$connect = new PDO('mysql:host=localhost;dbname=datadb;charset=utf8','root','');
+$dataTable = $connect -> prepare("SELECT * FROM table_data");
+$dataTable -> execute();
+$dataTable = $dataTable->fetchAll();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,50 +54,23 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+
+                                    <?foreach ($dataTable as $data){?>
                                         <tr>
-                                            <th scope="row">1</th>
-                                            <td>Mark</td>
-                                            <td>Otto</td>
-                                            <td>@mdo</td>
+                                            <th scope="row"><?=$data['id']?></th>
+                                            <td><?=$data['first_name']?></td>
+                                            <td><?=$data['last_name']?></td>
+                                            <td><?=$data['username']?></td>
                                             <td>
-                                                <a href="show.php?id=" class="btn btn-info">Редактировать</a>
-                                                <a href="edit.php?id=" class="btn btn-warning">Изменить</a>
-                                                <a href="delete.php?id=" class="btn btn-danger">Удалить</a>
+                                                <a href="show.php?id=<?=$data['id']?>" class="btn btn-info">Редактировать</a>
+                                                <a href="edit.php?id=<?=$data['id']?>" class="btn btn-warning">Изменить</a>
+                                                <a href="delete.php?id=<?=$data['id']?>" class="btn btn-danger">Удалить</a>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <th scope="row">2</th>
-                                            <td>Jacob</td>
-                                            <td>Thornton</td>
-                                            <td>@fat</td>
-                                            <td>
-                                                <a href="show.php?id=" class="btn btn-info">Редактировать</a>
-                                                <a href="edit.php?id=" class="btn btn-warning">Изменить</a>
-                                                <a href="delete.php?id=" class="btn btn-danger">Удалить</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">3</th>
-                                            <td>Larry</td>
-                                            <td>the Bird</td>
-                                            <td>@twitter</td>
-                                            <td>
-                                                <a href="show.php?id=" class="btn btn-info">Редактировать</a>
-                                                <a href="edit.php?id=" class="btn btn-warning">Изменить</a>
-                                                <a href="delete.php?id=" class="btn btn-danger">Удалить</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">4</th>
-                                            <td>Larry the Bird</td>
-                                            <td> Bird</td>
-                                            <td>@twitter</td>
-                                            <td>
-                                                <a href="show.php?id=" class="btn btn-info">Редактировать</a>
-                                                <a href="edit.php?id=" class="btn btn-warning">Изменить</a>
-                                                <a href="delete.php?id=" class="btn btn-danger">Удалить</a>
-                                            </td>
-                                        </tr>
+                                        <?}?>
+
+
+
                                     </tbody>
                                 </table>
                             </div>
