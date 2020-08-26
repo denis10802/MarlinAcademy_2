@@ -44,9 +44,39 @@ return [
     ],
     [
        'title'=>'Главная',
-        'href'=> '#',
+        'href'=> '',
         'is_link'=>false,
     ],
-]
+],
+    'progressBar'=> [
+        [
+            'title'=>'My Tasks',
+            'subtitle' => '130 / 500',
+            'bg'=> 'bg-fusion-400',
+            'width' => '65%',
+            'valuenow'=>'65',
+        ],
+        [
+            'title'=>'Transfered',
+            'subtitle' => '440 TB',
+            'bg'=> 'bg-success-500',
+            'width' => '34%',
+            'valuenow'=>'34',
+        ],
+        [
+            'title'=>'Bugs Squashed',
+            'subtitle' => '77%',
+            'bg'=> 'bg-info-400',
+            'width' => '77%',
+            'valuenow'=>'77',
+        ],
+        [
+            'title'=>'User Testing',
+            'subtitle' => '7 days',
+            'bg'=> 'bg-primary-300',
+            'width' => '84%',
+            'valuenow'=>'84',
+        ],
+    ]
 
 ];
