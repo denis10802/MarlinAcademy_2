@@ -120,6 +120,54 @@ return [
             'hrefBoot'=>'https://wrapbootstrap.com/user/sildur',
             'HrefTitle'=>'Contact Roberto',
         ],
+    ],
+
+    'cardIdAndBan'=>[
+        [
+            'img'=>'img/demo/authors/sunny.png',
+            'imgALT'=>'Sunny A.',
+            'name'=>'Sunny A. (UI/UX Expert)',
+            'position'=>'Lead Author',
+            'email'=>'https://twitter.com/@myplaneticket',
+            'link'=>'@myplaneticket',
+            'hrefBoot'=>'https://wrapbootstrap.com/user/myorange',
+            'HrefTitle'=>'Contact Sunny',
+            'status'=>'',
+
+        ],
+        [
+            'img'=>'img/demo/authors/josh.png',
+            'imgALT'=>'Jos K.',
+            'name'=>'Jos K. (ASP.NET Developer)',
+            'position'=>'Partner &amp; Contributor',
+            'email'=>'https://twitter.com/@atlantez',
+            'link'=>'@atlantez',
+            'hrefBoot'=>'https://wrapbootstrap.com/user/Walapa',
+            'HrefTitle'=>'Contact Jos',
+            'status'=>'',
+        ],
+        [
+            'img'=>'img/demo/authors/jovanni.png',
+            'imgALT'=>'Jovanni Lo',
+            'name'=>'Jovanni L. (PHP Developer)',
+            'position'=>'Partner &amp; Contributor',
+            'email'=>'https://twitter.com/@lodev09',
+            'link'=>'@lodev09',
+            'hrefBoot'=>'https://wrapbootstrap.com/user/lodev09',
+            'HrefTitle'=>'Contact Jovanni',
+            'status'=>'banned',
+        ],
+        [
+            'img'=>'img/demo/authors/roberto.png',
+            'imgALT'=>'Roberto R.',
+            'name'=>' Roberto R. (Rails Developer)',
+            'position'=>'Partner &amp; Contributor',
+            'email'=>'https://twitter.com/@sildur',
+            'link'=>'@sildur',
+            'hrefBoot'=>'https://wrapbootstrap.com/user/sildur',
+            'HrefTitle'=>'Contact Roberto',
+            'status'=>'banned',
+        ],
     ]
 
 ];
