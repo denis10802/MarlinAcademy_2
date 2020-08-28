@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c6fac348-fffa-4064-a5e9-f2e7f4ab788f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/conect_1.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/registration/connect.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/registration/func.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task_10.php" beforeDir="false" afterPath="$PROJECT_DIR$/task_10.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task_9.php" beforeDir="false" afterPath="$PROJECT_DIR$/task_9.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +51,9 @@
       <workItem from="1598355045963" duration="3618000" />
       <workItem from="1598441633780" duration="5064000" />
       <workItem from="1598446725924" duration="6498000" />
-      <workItem from="1598454514510" duration="3128000" />
+      <workItem from="1598454514510" duration="3488000" />
+      <workItem from="1598518782621" duration="13910000" />
+      <workItem from="1598607060751" duration="1900000" />
     </task>
     <servers />
   </component>
@@ -69,10 +70,10 @@
       <screen x="1920" y="0" width="1024" height="779" />
     </state>
     <state width="189" height="457" key="HiddenNamespacesPopup/0.0.1536.824/1920.0.1024.779@1920.0.1024.779" timestamp="1598446887808" />
-    <state x="2323" y="317" key="NewPhpFileDialog" timestamp="1598456407463">
-      <screen x="1920" y="0" width="1024" height="779" />
+    <state x="604" y="335" key="NewPhpFileDialog" timestamp="1598528486859">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="604" y="335" key="NewPhpFileDialog/0.0.1536.824/1920.0.1024.779@0.0.1536.824" timestamp="1598454903908" />
+    <state x="604" y="335" key="NewPhpFileDialog/0.0.1536.824/1920.0.1024.779@0.0.1536.824" timestamp="1598528486859" />
     <state x="2323" y="317" key="NewPhpFileDialog/0.0.1536.824/1920.0.1024.779@1920.0.1024.779" timestamp="1598456407463" />
     <state x="2332" y="267" key="com.intellij.database.actions.DdlActions$CreateObject$1" timestamp="1598446858511">
       <screen x="1920" y="0" width="1024" height="779" />
@@ -86,10 +87,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="566" y="232" width="403" height="355" key="com.intellij.database.psi.DbRenamePsiElementProcessor.DbRenameDialog/0.0.1536.824/1920.0.1024.779@0.0.1536.824" timestamp="1598448976161" />
-    <state x="789" y="106" width="719" height="555" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1598455528570">
+    <state x="789" y="106" width="719" height="555" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1598528133947">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="789" y="106" width="719" height="555" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1536.824/1920.0.1024.779@0.0.1536.824" timestamp="1598455528570" />
+    <state x="789" y="106" width="719" height="555" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1536.824/1920.0.1024.779@0.0.1536.824" timestamp="1598528133947" />
     <state x="1949" y="128" width="625" height="524" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1536.824/1920.0.1024.779@1920.0.1024.779" timestamp="1598447153509" />
     <state x="578" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1598452223389">
       <screen x="0" y="0" width="1536" height="824" />
