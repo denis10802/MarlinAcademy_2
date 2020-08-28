@@ -8,9 +8,8 @@ $pass = $_POST['password'];
 
 get_user_by_email($email);
 
-//set_flash_message('danger','Уведомление!Этот эл. адрес уже занят другим пользователем.');
 if(!empty(get_user_by_email($email))){
-    set_flash_message('danger',"Уведомление!Этот эл. адрес уже занят другим пользователем.");
+    set_flash_message('danger',"<strong>Уведомление!</strong> эл. адрес уже занят другим пользователем.");
     redirect_to('page_register.php');
     die();
 }

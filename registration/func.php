@@ -1,13 +1,5 @@
 <?php
 session_start();
-/*function sanitarString($var){
-    $var = strip_tags($var);
-    $var = htmlentities($var);
-    $var = stripcslashes($var);
-    return $var;
-}*/
-
-
 
 function get_user_by_email($email){
     $connection = new PDO("mysql:host=localhost;dbname=datadb;charset=utf8",'root','');
@@ -31,7 +23,7 @@ function add_user($email, $pass){
 function set_flash_message($name,$message){
     $_SESSION[$name] = $message;
     $_SESSION[$name]= $message;
-    return  $name. $message;
+
 }
 
 function display_flash_message($name){

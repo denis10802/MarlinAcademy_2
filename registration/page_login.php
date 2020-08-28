@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+require ("func.php");
 ?>
 
 
@@ -40,13 +40,7 @@ session_start();
         </div>
         <div class="card p-4 border-top-left-radius-0 border-top-right-radius-0">
 
-            <?if(isset($_SESSION['success'])){?>
-            <div class="alert alert-success">
-                <?=$_SESSION['success'];
-                unset($_SESSION['success']);
-                ?>
-            </div>
-            <?}?>
+            <?display_flash_message('success')?>
 
             <form action="">
                 <div class="form-group">
