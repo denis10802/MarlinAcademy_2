@@ -1,5 +1,6 @@
 <?php
 session_start();
+require ("func.php");
 ?>
 
 
@@ -65,13 +66,17 @@ session_start();
                             <div class="col-xl-6 ml-auto mr-auto">
                                 <div class="card p-4 rounded-plus bg-faded">
 
-                                    <?if(isset($_SESSION['danger'])){?>
+
+                                    <?display_flash_message('danger')?>
+
+
+                                    <?/*if(isset($_SESSION['danger'])){*/?><!--
                                     <div class="alert alert-danger text-dark" role="alert">
-                                        <?=$_SESSION['danger'];
+                                        <?/*=$_SESSION['danger'];
                                         unset($_SESSION['danger'])
-                                        ?>
+                                        */?>
                                     </div>
-                                    <?}?>
+                                    --><?/*}*/?>
                                     <form id="js-login" novalidate="" action="connect.php" method="post">
                                         <div class="form-group">
                                             <label class="form-label" for="emailverify">Email</label>

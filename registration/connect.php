@@ -3,22 +3,21 @@ session_start();
 require ("func.php");
 $email = $_POST['email'];
 $pass = $_POST['password'];
-$message = $_SESSION['danger'];
-$message = $_SESSION['success'];
+
 
 
 get_user_by_email($email);
 
-set_flash_message($message);
+//set_flash_message('danger','Уведомление!Этот эл. адрес уже занят другим пользователем.');
 if(!empty(get_user_by_email($email))){
-    set_flash_message("Уведомление!Этот эл. адрес уже занят другим пользователем.");
-    header("location:page_register.php");
+    set_flash_message('danger',"Уведомление!Этот эл. адрес уже занят другим пользователем.");
+    redirect_to('page_register.php');
     die();
 }
 
 add_user($email, $pass);
-set_flash_message("Регистрация успешна!");
-header("location:page_login.php");
+set_flash_message('success',"Регистрация успешна!");
+redirect_to('page_login.php');
 
 
 

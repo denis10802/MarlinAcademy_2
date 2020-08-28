@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 /*function sanitarString($var){
     $var = strip_tags($var);
     $var = htmlentities($var);
@@ -25,16 +25,23 @@ function add_user($email, $pass){
             'pass'=>$pass
         ]
     );
+
 }
 
-function set_flash_message($message){
-    $_SESSION['danger'] = $message;
-    $_SESSION['success'] = $message;
-        return $message;
+function set_flash_message($name,$message){
+    $_SESSION[$name] = $message;
+    $_SESSION[$name]= $message;
+    return  $name. $message;
 }
 
+function display_flash_message($name){
 
+        if (isset($_SESSION[$name])){
+            echo "<div class=\"alert alert-{$name}\">{$_SESSION[$name]}</div>";
+            unset($_SESSION[$name]);
+        }
+    }
 
-
-
-
+function redirect_to($path){
+    header("Location:$path");
+}
