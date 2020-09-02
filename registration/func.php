@@ -40,5 +40,6 @@ function login($email, $pass){
     $connection = new PDO("mysql:host=localhost;dbname=datadb;charset=utf8",'root','');
     $log = $connection ->prepare("SELECT * FROM registration");
     $log ->execute(['email'=>$email, 'password'=>$pass]);
-    return $log ;
+    return $log;
+
 }

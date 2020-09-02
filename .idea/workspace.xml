@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c6fac348-fffa-4064-a5e9-f2e7f4ab788f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/registration/logConnect.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/registration/connect.php" beforeDir="false" afterPath="$PROJECT_DIR$/registration/connect.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/registration/func.php" beforeDir="false" afterPath="$PROJECT_DIR$/registration/func.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/registration/page_login.php" beforeDir="false" afterPath="$PROJECT_DIR$/registration/page_login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task_8.php" beforeDir="false" afterPath="$PROJECT_DIR$/registration/task_8.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/registration/logConnect.php" beforeDir="false" afterPath="$PROJECT_DIR$/registration/logConnect.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,7 +60,7 @@
       <workItem from="1598454514510" duration="3488000" />
       <workItem from="1598518782621" duration="13910000" />
       <workItem from="1598607060751" duration="10401000" />
-      <workItem from="1599029598080" duration="17638000" />
+      <workItem from="1599029598080" duration="18330000" />
     </task>
     <servers />
   </component>

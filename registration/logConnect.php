@@ -3,7 +3,7 @@ session_start();
 require ("func.php");
 
 $logs = login($email,$pass);
-if($_POST['email']) {
+if(isset($logs)){
     foreach ($logs as $login) {
         if ($_POST['email'] == $login['email'] && $_POST['password'] == $login['password']) {
             $_SESSION['email'] = $_POST['email'];
