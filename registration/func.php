@@ -11,19 +11,15 @@ function get_user_by_email($email){
 function add_user($email, $pass){
     $connection = new PDO("mysql:host=localhost;dbname=datadb;charset=utf8",'root','');
     $query = $connection ->prepare("INSERT INTO registration (email, password) VALUES (:email, :pass)");
-    return $query ->execute(
+   $query ->execute(
         [
             'email'=>$email,
             'pass'=>$pass
-        ]
-    );
-
+        ]);
 }
 
 function set_flash_message($name,$message){
     $_SESSION[$name] = $message;
-    $_SESSION[$name]= $message;
-
 }
 
 function display_flash_message($name){
@@ -36,4 +32,13 @@ function display_flash_message($name){
 
 function redirect_to($path){
     header("Location:$path");
+}
+
+
+
+function login($email, $pass){
+    $connection = new PDO("mysql:host=localhost;dbname=datadb;charset=utf8",'root','');
+    $log = $connection ->prepare("SELECT * FROM registration");
+    $log ->execute(['email'=>$email, 'password'=>$pass]);
+    return $log ;
 }
