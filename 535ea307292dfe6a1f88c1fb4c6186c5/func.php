@@ -55,22 +55,6 @@ function is_logged_in()
 }
 
 
-if(!$_SESSION['email'] || !$_SESSION['password']){
-    redirect_to('page_login.php');
-    die();
-}
-
-$connection = new PDO('mysql:host=localhost;dbname=datadb;charset=utf8','root','');
-$cardData =$connection->prepare("SELECT * FROM users");
-$cardData ->execute();
-$cardData=$cardData->fetchAll();
-
-$mail = $_SESSION['email'];
-$user=$connection->query("SELECT * FROM users WHERE email ='$mail'");
-$user=$user->fetch();
-
-
-
 
 
 
