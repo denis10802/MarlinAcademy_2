@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c6fac348-fffa-4064-a5e9-f2e7f4ab788f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/535ea307292dfe6a1f88c1fb4c6186c5/login_connect.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/535ea307292dfe6a1f88c1fb4c6186c5/register_connect.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/registration/connect.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/registration/func.php" beforeDir="false" afterPath="$PROJECT_DIR$/535ea307292dfe6a1f88c1fb4c6186c5/func.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/registration/logConnect.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/registration/page_login.php" beforeDir="false" afterPath="$PROJECT_DIR$/535ea307292dfe6a1f88c1fb4c6186c5/page_login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/registration/page_register.php" beforeDir="false" afterPath="$PROJECT_DIR$/535ea307292dfe6a1f88c1fb4c6186c5/page_register.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/535ea307292dfe6a1f88c1fb4c6186c5/func.php" beforeDir="false" afterPath="$PROJECT_DIR$/535ea307292dfe6a1f88c1fb4c6186c5/func.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +64,7 @@
       <workItem from="1602090300972" duration="617000" />
       <workItem from="1602397041042" duration="6865000" />
       <workItem from="1602740776627" duration="24959000" />
-      <workItem from="1602853791889" duration="39376000" />
+      <workItem from="1602853791889" duration="39694000" />
     </task>
     <servers />
   </component>
