@@ -1,8 +1,9 @@
 <?php
 session_start();
-require("func.php");
+require("functions.php");
 $email = $_POST['email'];
 $pass = $_POST['password'];
+
 
 $userReg = get_user_by_email($email);
 

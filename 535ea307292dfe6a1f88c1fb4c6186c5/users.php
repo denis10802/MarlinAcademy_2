@@ -1,6 +1,6 @@
 <?php
 session_start();
-require ('func.php');
+require('functions.php');
 
 if(!$_SESSION['email'] || !$_SESSION['password']){
     redirect_to('page_login.php');
@@ -65,7 +65,7 @@ $user=$user->fetch();
                 <div class="col-xl-12">
 
                    <?if($user['role']=='admin'){
-                    echo "<a class=\"btn btn-success \" href=\"create_user.html\">Добавить</a>";
+                    echo "<a class=\"btn btn-success \" href=\"create_user.php\">Добавить</a>";
                     }?>
 
                     <div class="border-faded bg-faded p-3 mb-g d-flex mt-3">

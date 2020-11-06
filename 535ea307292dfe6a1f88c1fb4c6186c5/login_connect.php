@@ -1,6 +1,6 @@
 <?php
 session_start();
-require("func.php");
+require("functions.php");
 
 if(is_logged_in()){
     redirect_to('users.php');
