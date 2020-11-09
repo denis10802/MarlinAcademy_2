@@ -2,19 +2,12 @@
 session_start();
 require('functions.php');
 
-if(!$_SESSION['email'] || !$_SESSION['password']){
-    redirect_to('page_login.php');
-    die();
-}
+data_validation($email, $pass);
+$users = users_data();
+$emailAdmin = $_SESSION['email'];
+$userAdmin =  get_admin_by_email($emailAdmin);
+$admin = is_admin($userAdmin);
 
-$connection = new PDO('mysql:host=localhost;dbname=datadb;charset=utf8','root','');
-$cardData =$connection->prepare("SELECT * FROM users");
-$cardData ->execute();
-$cardData=$cardData->fetchAll();
-
-$mail = $_SESSION['email'];
-$user=$connection->query("SELECT * FROM users WHERE email ='$mail'");
-$user=$user->fetch();
 ?>
 
 <!DOCTYPE html>
@@ -56,6 +49,8 @@ $user=$user->fetch();
 <!--            <div class="alert alert-success">-->
 <!--                Профиль успешно обновлен.-->
 <!--            </div>-->
+            <?display_flash_message('success')?>
+            <?display_flash_message('danger')?>
             <div class="subheader">
                 <h1 class="subheader-title">
                     <i class='subheader-icon fal fa-users'></i> Список пользователей
@@ -64,9 +59,9 @@ $user=$user->fetch();
             <div class="row">
                 <div class="col-xl-12">
 
-                   <?if($user['role']=='admin'){
-                    echo "<a class=\"btn btn-success \" href=\"create_user.php\">Добавить</a>";
-                    }?>
+                   <?if ($admin) {
+                       echo "<a class=\"btn btn-success \" href=\"create_user.php\">Добавить</a>";
+                   }?>
 
                     <div class="border-faded bg-faded p-3 mb-g d-flex mt-3">
                         <input type="text" id="js-filter-contacts" name="filter-contacts" class="form-control shadow-inset-2 form-control-lg" placeholder="Найти пользователя">
@@ -83,31 +78,33 @@ $user=$user->fetch();
             </div>
             <div class="row" id="js-contacts">
 
-            <?foreach ($cardData as $card){?>
+            <?foreach ($users as $card){?>
 
                 <div class="col-xl-4">
-                    <div id="c_1" class="card border shadow-0 mb-g shadow-sm-hover" data-filter-tags="<?=$card['Names']?>">
+                    <div id="c_1" class="card border shadow-0 mb-g shadow-sm-hover" data-filter-tags="<?=$card['username']?>">
                         <div class="card-body border-faded border-top-0 border-left-0 border-right-0 rounded-top">
                             <div class="d-flex flex-row align-items-center">
                                 <span class="status <?=$card['status']?> mr-3">
-                                    <span class="rounded-circle profile-image d-block " style="background-image:url('<?=$card['icon']?>'); background-size: cover;"></span>
+                                    <span class="rounded-circle profile-image d-block " style="background-image:url('<?=$card['img']?>'); background-size: cover;"></span>
                                 </span>
                                 <div class="info-card-text flex-1">
-                                    <?if($user['role']=='admin') {?>
+                                    <?if($admin){?>
                                     <a href="javascript:void(0);" class="fs-xl text-truncate text-truncate-lg text-info" data-toggle="dropdown" aria-expanded="false" >
-                                        <?=$card['Names']?>
+                                        <?=$card['username']?>
                                             <i class="fal fas fa-cog fa-fw d-inline-block ml-1 fs-md"></i>
                                             <i class="fal fa-angle-down d-inline-block ml-1 fs-md"></i>
                                     </a>
-                                    <?}else if($card['Names']==$user['Names']){?>
+                                    <?}else if($card['username'] == $userAdmin['username']){?>
+
                                     <a href="javascript:void(0);" class="fs-xl text-truncate text-truncate-lg text-info" data-toggle="dropdown" aria-expanded="false" >
-                                        <?=$card['Names']?>
+                                        <?=$card['username']?>
                                         <i class="fal fas fa-cog fa-fw d-inline-block ml-1 fs-md"></i>
                                         <i class="fal fa-angle-down d-inline-block ml-1 fs-md"></i>
                                     </a>
                                     <?}else{?>
+
                                     <a href="javascript:void(0);" class="fs-xl text-truncate text-truncate-lg text-info" data-toggle="dropdown" aria-expanded="false" >
-                                        <?=$card['Names']?>
+                                        <?=$card['username']?>
                                     </a>
                                     <?}?>
                                         <div class="dropdown-menu">
@@ -129,7 +126,7 @@ $user=$user->fetch();
                                             Удалить
                                         </a>
                                     </div>
-                                    <span class="text-truncate text-truncate-xl"><?=$card['posit']?></span>
+                                    <span class="text-truncate text-truncate-xl"><?=$card['job_title']?></span>
                                 </div>
                                 <button class="js-expand-btn btn btn-sm btn-default d-none" data-toggle="collapse" data-target="#c_1 > .card-body + .card-body" aria-expanded="false">
                                     <span class="collapsed-hidden">+</span>
@@ -144,7 +141,7 @@ $user=$user->fetch();
                                 <a href="mailto:<?=$card['email']?>" class="mt-1 d-block fs-sm fw-400 text-dark">
                                     <i class="fas fa-mouse-pointer text-muted mr-2"></i> <?=$card['email']?></a>
                                 <address class="fs-sm fw-400 mt-4 text-muted">
-                                    <i class="fas fa-map-pin mr-2"></i> <?=$card['adress']?></address>
+                                    <i class="fas fa-map-pin mr-2"></i> <?=$card['address']?></address>
                                 <div class="d-flex flex-row">
                                     <a href="javascript:void(0);" class="mr-2 fs-xxl" style="color:#4680C2">
                                         <i class="fab fa-vk"></i>

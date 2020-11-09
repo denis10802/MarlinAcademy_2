@@ -19,15 +19,15 @@ require("functions.php");
     <!-- Remove Tap Highlight on Windows Phone IE -->
     <meta name="msapplication-tap-highlight" content="no">
     <!-- base css -->
-    <link id="vendorsbundle" rel="stylesheet" media="screen, print" href="../registration/css/vendors.bundle.css">
-    <link id="appbundle" rel="stylesheet" media="screen, print" href="../registration/css/app.bundle.css">
+    <link id="vendorsbundle" rel="stylesheet" media="screen, print" href="css/vendors.bundle.css">
+    <link id="appbundle" rel="stylesheet" media="screen, print" href="css/app.bundle.css">
     <link id="mytheme" rel="stylesheet" media="screen, print" href="#">
-    <link id="myskin" rel="stylesheet" media="screen, print" href="../registration/css/skins/skin-master.css">
+    <link id="myskin" rel="stylesheet" media="screen, print" href="css/skins/skin-master.css">
     <!-- Place favicon.ico in the root directory -->
-    <link rel="apple-touch-icon" sizes="180x180" href="../registration/img/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../registration/img/favicon/favicon-32x32.png">
-    <link rel="mask-icon" href="../registration/img/favicon/safari-pinned-tab.svg" color="#5bbad5">
-    <link rel="stylesheet" media="screen, print" href="../registration/css/fa-brands.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
+    <link rel="mask-icon" href="img/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="stylesheet" media="screen, print" href="css/fa-brands.css">
 </head>
 <body>
     <div class="page-wrapper auth">
@@ -37,7 +37,7 @@ require("functions.php");
                     <div class="d-flex align-items-center container p-0">
                         <div class="page-logo width-mobile-auto m-0 align-items-center justify-content-center p-0 bg-transparent bg-img-none shadow-0 height-9 border-0">
                             <a href="javascript:void(0)" class="page-logo-link press-scale-down d-flex align-items-center">
-                                <img src="../registration/img/logo.png" alt="SmartAdmin WebApp" aria-roledescription="logo">
+                                <img src="img/logo.png" alt="SmartAdmin WebApp" aria-roledescription="logo">
                                 <span class="page-logo-text mr-1">Учебный проект</span>
                             </a>
                         </div>
@@ -49,7 +49,7 @@ require("functions.php");
                         </a>
                     </div>
                 </div>
-                <div class="flex-1" style="background: url(../registration/img/svg/pattern-1.svg) no-repeat center bottom fixed; background-size: cover;">
+                <div class="flex-1" style="background: url(img/svg/pattern-1.svg) no-repeat center bottom fixed; background-size: cover;">
                     <div class="container py-4 py-lg-5 my-lg-5 px-4 px-sm-0">
                         <div class="row">
                             <div class="col-xl-12">
@@ -102,7 +102,7 @@ require("functions.php");
         </div>
     </div>
     
-    <script src="../registration/js/vendors.bundle.js"></script>
+    <script src="js/vendors.bundle.js"></script>
     <script>
         $("#js-login-btn").click(function(event)
         {
