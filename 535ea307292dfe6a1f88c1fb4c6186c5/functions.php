@@ -180,4 +180,20 @@ function redirect_to($path){
 }
 
 
+ //profile
+
+function user_info($user_id)
+{
+    $connection = new PDO('mysql:host=localhost;dbname=datadb;charset=utf8', 'root', '');
+    $cardData = $connection->prepare("SELECT * FROM creat_user WHERE id = :user_id");
+    $cardData->execute(['user_id'=>$user_id]);
+    return $cardData = $cardData->fetch();
+}
+
+function user_id($email){
+    $connection = new PDO("mysql:host=localhost;dbname=datadb;charset=utf8",'root','');
+    $user_id = $connection->prepare("SELECT id FROM creat_user WHERE email= :email");
+    $user_id -> execute(['email'=>$email]);
+    return $user_id = $user_id->fetchColumn();
+}
 
