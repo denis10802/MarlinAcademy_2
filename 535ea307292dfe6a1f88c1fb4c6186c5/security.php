@@ -66,7 +66,9 @@ if(!admin($user) ){
             </h1>
 
         </div>
+
         <?display_flash_message('danger')?>
+
         <form action="security_connect.php" method="POST">
             <div class="row">
                 <div class="col-xl-6">

@@ -11,7 +11,6 @@ $connection = new PDO("mysql:host=localhost;dbname=datadb;charset=utf8",'root','
 $query = $connection ->query("SELECT email FROM creat_user");
 $query = $query ->fetchAll();
 
-
 if(isset($email)){
     if($email != $user_email){
         edit_credentials($user_id, $email, $pass);

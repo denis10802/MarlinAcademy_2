@@ -3,7 +3,6 @@ session_start();
 require('functions.php');
 
 $email = $_SESSION['email'];
-var_dump($email);
 data_validation($email);
 $user_id = user_id($email);
 $user = user_info($user_id);
