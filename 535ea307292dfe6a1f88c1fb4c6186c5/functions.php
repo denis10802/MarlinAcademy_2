@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-
 function get_user_by_email($email){
     $connection = new PDO("mysql:host=localhost;dbname=datadb;charset=utf8",'root','');
     $query = $connection -> prepare("SELECT * FROM creat_user WHERE email=:email");
@@ -31,27 +30,23 @@ function display_flash_message($name){
         }
     }
 
-function is_logged_in($email, $pass)
-{
-
+function is_logged_in($email, $pass){
     $connection = new PDO("mysql:host=localhost;dbname=datadb;charset=utf8",'root','');
-    $log = $connection ->prepare("SELECT * FROM creat_user ");
-    $log ->execute(['email'=>$email, 'password'=>$pass]);
-        foreach ($log as $login) {
-            if ($_POST['email'] == $login['email'] && $_POST['password'] == $login['password']) {
-                $_SESSION['email'] = $_POST['email'];
-                $_SESSION['password'] = $_POST['password'];
-                $ps = $_SESSION['password'];
-                $em = $_SESSION['email'];
-                return [$ps,$em];
-
-            }
+    $log = $connection ->prepare("SELECT * FROM creat_user WHERE email = :email");
+    $log ->execute(['email'=> $email]);
+    $log = $log ->fetchAll();
+    foreach ($log as $login) {
+        if ($email == $login['email']) {
+            $_SESSION['email'] = $email;
+            $_SESSION['password'] = $pass;
+            return true;
         }
 
+    }
 }
 
-function data_validation($email, $pass){
-    if($email || $pass){
+function data_validation($email){
+    if(!$email){
         redirect_to('page_login.php');
         die();
     }
@@ -73,14 +68,9 @@ function get_user_by_id($edit_user_id){
     return $request = $query ->fetch();
 }
 
-function is_author($user_data,$edit_user_id,$logged_user_id)
+function is_author($edit_user_id,$logged_user_id)
 {
-    if ($user_data['role'] == 'admin') {
-        if ($edit_user_id > $logged_user_id || $edit_user_id < $logged_user_id) {
-            redirect_to("users.php");
-            set_flash_message('danger',"Вы не можете редактировать чужой профиль, можно редактировать только свой профиль!");
-        }
-    }
+    return $edit_user_id == $logged_user_id;
 
 }
 
@@ -99,17 +89,14 @@ function edit_info($username,$phone, $job_title, $address, $id){
 
 //функции для админа
 
-function get_admin_by_email($emailAdmin){
-    $connection = new PDO('mysql:host=localhost;dbname=datadb;charset=utf8','root','');
-    $user = $connection->query("SELECT * FROM creat_user WHERE email ='$emailAdmin'");
-    $user = $user->fetch();
-    return $user;
-}
-
-function is_admin($userAdmin)
+function is_admin($user)
 {
-   return $userAdmin['role'] == 'admin';
-}
+   return $user['role'] == 'admin';
+}// для users.php
+
+function admin($user){
+    return $user == 'admin';
+} // для редактирования пользователя
 
 function addUser($email, $password)
 {
@@ -197,3 +184,7 @@ function user_id($email){
     return $user_id = $user_id->fetchColumn();
 }
 
+function edit_credentials($user_id, $email, $pass){
+    $connection = new PDO("mysql:host=localhost;dbname=datadb;charset=utf8",'root','');
+    $connection ->query("UPDATE creat_user SET email = '$email',password = '$pass' WHERE id = '$user_id' ");
+}

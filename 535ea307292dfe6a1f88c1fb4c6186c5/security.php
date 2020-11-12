@@ -1,3 +1,30 @@
+<?php
+session_start();
+require("functions.php");
+$email = $_SESSION['email'];
+$edit_user_id = $_GET["id"];
+$_SESSION['id'] = $_GET['id'];
+
+$connection = new PDO("mysql:host=localhost;dbname=datadb;charset=utf8",'root','');
+$logged_user_id = $connection->prepare("SELECT id FROM creat_user WHERE email= :email");
+$logged_user_id -> execute(['email'=>$email]);
+$logged_user_id = $logged_user_id->fetchColumn();
+
+$user =  $connection->prepare("SELECT role FROM creat_user WHERE email= :email");
+$user  -> execute(['email'=>$email]);
+$user = $user ->fetchColumn();
+
+$user_data = get_user_by_id($edit_user_id);
+
+if(!admin($user) ){
+    if(!is_author($edit_user_id,$logged_user_id)) {
+        redirect_to("users.php");
+        set_flash_message('danger', "Вы не можете редактировать чужой профиль, можно редактировать только свой профиль!");
+    }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,6 +58,7 @@
             </ul>
         </div>
     </nav>
+
     <main id="js-page-content" role="main" class="page-content mt-3">
         <div class="subheader">
             <h1 class="subheader-title">
@@ -38,7 +66,8 @@
             </h1>
 
         </div>
-        <form action="">
+        <?display_flash_message('danger')?>
+        <form action="security_connect.php" method="POST">
             <div class="row">
                 <div class="col-xl-6">
                     <div id="panel-1" class="panel">
@@ -50,24 +79,24 @@
                                 <!-- email -->
                                 <div class="form-group">
                                     <label class="form-label" for="simpleinput">Email</label>
-                                    <input type="text" id="simpleinput" class="form-control" value="john@example.com">
+                                    <input type="text" name="email" id="simpleinput" class="form-control" value="<?=$user_data['email']?>" required>
                                 </div>
 
                                 <!-- password -->
                                 <div class="form-group">
                                     <label class="form-label" for="simpleinput">Пароль</label>
-                                    <input type="password" id="simpleinput" class="form-control">
+                                    <input type="password" name="password" id="simpleinput" class="form-control" required>
                                 </div>
 
                                 <!-- password confirmation-->
-                                <div class="form-group">
-                                    <label class="form-label" for="simpleinput">Подтверждение пароля</label>
-                                    <input type="password" id="simpleinput" class="form-control">
-                                </div>
+<!--                                <div class="form-group">-->
+<!--                                    <label class="form-label" for="simpleinput">Подтверждение пароля</label>-->
+<!--                                    <input type="password" id="simpleinput" class="form-control">-->
+<!--                                </div>-->
 
 
                                 <div class="col-md-12 mt-3 d-flex flex-row-reverse">
-                                    <button class="btn btn-warning">Изменить</button>
+                                    <button class="btn btn-warning" name="btn-security-user">Изменить</button>
                                 </div>
                             </div>
                         </div>

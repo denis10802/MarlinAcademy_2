@@ -1,13 +1,11 @@
 <?php
 session_start();
 require('functions.php');
-
-data_validation($email, $pass);
+$email = $_SESSION['email'];
+data_validation($email);
 $users = users_data();
-$emailAdmin = $_SESSION['email'];
-$userAdmin =  get_admin_by_email($emailAdmin);
-$admin = is_admin($userAdmin);
-
+$user =  get_user_by_email($email);
+$admin = is_admin($user);
 ?>
 
 <!DOCTYPE html>
@@ -39,7 +37,7 @@ $admin = is_admin($userAdmin);
                         <a class="nav-link" href="page_login.php">Войти</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Выйти</a>
+                        <a class="nav-link" href="page_login.php">Выйти</a>
                     </li>
                 </ul>
             </div>
@@ -49,8 +47,10 @@ $admin = is_admin($userAdmin);
 <!--            <div class="alert alert-success">-->
 <!--                Профиль успешно обновлен.-->
 <!--            </div>-->
-            <?display_flash_message('success')?>
+
             <?display_flash_message('danger')?>
+            <??>
+
             <div class="subheader">
                 <h1 class="subheader-title">
                     <i class='subheader-icon fal fa-users'></i> Список пользователей
@@ -94,8 +94,7 @@ $admin = is_admin($userAdmin);
                                             <i class="fal fas fa-cog fa-fw d-inline-block ml-1 fs-md"></i>
                                             <i class="fal fa-angle-down d-inline-block ml-1 fs-md"></i>
                                     </a>
-                                    <?}else if($card['username'] == $userAdmin['username']){?>
-
+                                    <?}else if($card['username'] == $user['username']){?>
                                     <a href="javascript:void(0);" class="fs-xl text-truncate text-truncate-lg text-info" data-toggle="dropdown" aria-expanded="false" >
                                         <?=$card['username']?>
                                         <i class="fal fas fa-cog fa-fw d-inline-block ml-1 fs-md"></i>

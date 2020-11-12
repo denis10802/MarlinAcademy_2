@@ -15,4 +15,4 @@ if(!empty($change_user)){
     set_flash_message('success',"Профиль успешно обновлен");
 }
 
-redirect_to("users.php");
+redirect_to("page_profile.php");

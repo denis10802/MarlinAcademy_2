@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 require("functions.php");
 
 ?>
@@ -45,11 +46,11 @@ require("functions.php");
             <form  method="POST" action="login_connect.php">
                 <div class="form-group">
                     <label class="form-label" for="username">Email</label>
-                    <input type="email" id="username" class="form-control" placeholder="Эл. адрес" value="" name="email" required>
+                    <input type="email" id="username" class="form-control" placeholder="Эл. адрес"  name="email" required>
                 </div>
                 <div class="form-group">
                     <label class="form-label" for="password">Пароль</label>
-                    <input type="password" id="password" class="form-control" placeholder="" name="password" required>
+                    <input type="password" id="password" class="form-control"  name="password" required>
                 </div>
                 <div class="form-group text-left">
                     <div class="custom-control custom-checkbox">

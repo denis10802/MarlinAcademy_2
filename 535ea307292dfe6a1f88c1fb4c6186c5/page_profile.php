@@ -1,9 +1,10 @@
 <?php
 session_start();
 require('functions.php');
-data_validation($email, $pass);
 
 $email = $_SESSION['email'];
+var_dump($email);
+data_validation($email);
 $user_id = user_id($email);
 $user = user_info($user_id);
 
@@ -32,19 +33,28 @@ $user = user_info($user_id);
             <div class="collapse navbar-collapse" id="navbarColor02">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item ">
-                        <a class="nav-link" href="#">Главная</a>
+                        <a class="nav-link" href="users.php">Главная</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Войти</a>
+                        <a class="nav-link" href="users.php">Войти</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Выйти</a>
+                        <a class="nav-link" href="page_login.php">Выйти</a>
                     </li>
                 </ul>
             </div>
         </nav>
+
+        <div>
+            <?display_flash_message('success')?>
+
+
+
+        </div>
+
+
         <main id="js-page-content" role="main" class="page-content mt-3">
             <div class="subheader">
                 <h1 class="subheader-title">
