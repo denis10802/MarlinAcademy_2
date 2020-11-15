@@ -20,6 +20,7 @@ if(!admin($user) ){
     if(!is_author($edit_user_id,$logged_user_id)) {
         redirect_to("users.php");
         set_flash_message('danger', "Вы не можете редактировать чужой профиль, можно редактировать только свой профиль!");
+
     }
 }
 
@@ -67,7 +68,7 @@ if(!admin($user) ){
 
         </div>
 
-        <?display_flash_message('danger')?>
+        <?display_flash_message('warning')?>
 
         <form action="security_connect.php" method="POST">
             <div class="row">

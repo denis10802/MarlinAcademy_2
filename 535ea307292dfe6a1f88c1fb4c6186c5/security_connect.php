@@ -20,7 +20,7 @@ if(isset($email)){
     }
     foreach ($query as $item){
         if($email == $item['email']){
-            set_flash_message('danger', 'Введёный email уже существует, либо используется вами');
+            set_flash_message('warning', 'Введёный email уже существует, либо используется вами');
             $_SESSION['email'] = $user_email;
             $user_url = "security.php?id=$user_id";
             redirect_to("$user_url");

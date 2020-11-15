@@ -46,20 +46,13 @@ $user = user_info($user_id);
             </div>
         </nav>
 
-        <div>
-            <?display_flash_message('success')?>
-
-
-
-        </div>
-
-
         <main id="js-page-content" role="main" class="page-content mt-3">
             <div class="subheader">
                 <h1 class="subheader-title">
                     <i class='subheader-icon fal fa-user'></i> <?=$user['username']?>
                 </h1>
             </div>
+            <?display_flash_message('success')?>
             <div class="row">
               <div class="col-lg-6 col-xl-6 m-auto">
                     <!-- profile summary -->

@@ -166,7 +166,6 @@ function redirect_to($path){
     header("Location:$path");
 }
 
-
  //profile
 
 function user_info($user_id)

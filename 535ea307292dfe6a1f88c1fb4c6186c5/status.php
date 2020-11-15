@@ -1,3 +1,38 @@
+<?php
+session_start();
+require("functions.php");
+$email = $_SESSION['email'];
+$edit_user_id = $_GET["id"];
+$_SESSION['id'] = $_GET['id'];
+
+$connection = new PDO("mysql:host=localhost;dbname=datadb;charset=utf8",'root','');
+$logged_user_id = $connection->prepare("SELECT id FROM creat_user WHERE email= :email");
+$logged_user_id -> execute(['email'=>$email]);
+$logged_user_id = $logged_user_id->fetchColumn();
+
+$user =  $connection->prepare("SELECT role FROM creat_user WHERE email= :email");
+$user  -> execute(['email'=>$email]);
+$user = $user ->fetchColumn();
+
+if(!admin($user) ){
+    if(!is_author($edit_user_id,$logged_user_id)) {
+        redirect_to("users.php");
+        set_flash_message('danger', "Вы не можете редактировать чужой профиль, можно редактировать только свой профиль!");
+
+    }
+}
+
+$connection = new PDO("mysql:host=localhost;dbname=datadb;charset=utf8",'root','');
+$status_user_now = $connection ->query("SELECT status FROM creat_user WHERE id = '$edit_user_id'");
+$status_user_now = $status_user_now ->fetchColumn();
+
+$connection = new PDO("mysql:host=localhost;dbname=datadb;charset=utf8",'root','');
+$status = $connection ->query("SELECT * FROM status");
+$status = $status ->fetchAll();
+
+$selected = 'selected';
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,7 +73,7 @@
             </h1>
 
         </div>
-        <form action="">
+        <form action="status_connect.php" method="POST">
             <div class="row">
                 <div class="col-xl-6">
                     <div id="panel-1" class="panel">
@@ -52,10 +87,13 @@
                                         <!-- status -->
                                         <div class="form-group">
                                             <label class="form-label" for="example-select">Выберите статус</label>
-                                            <select class="form-control" id="example-select">
-                                                <option>Онлайн</option>
-                                                <option>Отошел</option>
-                                                <option>Не беспокоить</option>
+
+                                            <select class="form-control" id="example-select" name="status">
+                                         <?foreach ($status as $status_show){?>
+                            <option value="<?=$status_show['key']?>" <?if($status_user_now == $status_show['key']) echo $selected;?>>                                                <?=$status_show['value']?></option>
+                                                <?}?>
+
+
                                             </select>
                                         </div>
                                     </div>
