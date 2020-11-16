@@ -24,7 +24,7 @@ require ('functions.php');
         <div class="collapse navbar-collapse" id="navbarColor02">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Главная <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="users.php">Главная <span class="sr-only">(current)</span></a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
@@ -107,9 +107,9 @@ require ('functions.php');
                                 <div class="form-group">
                                     <label class="form-label" for="example-select">Выберите статус</label>
                                     <select class="form-control" id="example-select" name="status">
-                                        <option >Онлайн</option>
-                                        <option >Отошел</option>
-                                        <option >Не беспокоить</option>
+                                        <option value="success">Онлайн</option>
+                                        <option value="danger">Отошел</option>
+                                        <option value="warning" >Не беспокоить</option>
                                     </select>
                                 </div>
 

@@ -1,3 +1,31 @@
+<?php
+session_start();
+require('functions.php');
+$email = $_SESSION['email'];
+$edit_user_id = $_GET["id"];
+$_SESSION['id'] = $_GET['id'];
+
+$connection = new PDO("mysql:host=localhost;dbname=datadb;charset=utf8",'root','');
+$logged_user_id = $connection->prepare("SELECT id FROM creat_user WHERE email= :email");
+$logged_user_id -> execute(['email'=>$email]);
+$logged_user_id = $logged_user_id->fetchColumn();
+
+$user =  $connection->prepare("SELECT role FROM creat_user WHERE email= :email");
+$user  -> execute(['email'=>$email]);
+$user = $user ->fetchColumn();
+
+$user_data = get_user_by_id($edit_user_id);
+
+if(!admin($user) ){
+    if(!is_author($edit_user_id,$logged_user_id)) {
+        redirect_to("users.php");
+        set_flash_message('danger', "Вы не можете редактировать чужой профиль, можно редактировать только свой профиль!");
+    }
+}
+
+$user_img = $user_data['img'].'.'.$user_data['img_extension'];
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +46,7 @@
         <div class="collapse navbar-collapse" id="navbarColor02">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Главная <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="users.php">Главная <span class="sr-only">(current)</span></a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
@@ -38,7 +66,7 @@
             </h1>
 
         </div>
-        <form action="">
+        <form action="media_connect.php" method="POST" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-xl-6">
                     <div id="panel-1" class="panel">
@@ -46,20 +74,23 @@
                             <div class="panel-hdr">
                                 <h2>Текущий аватар</h2>
                             </div>
+                            <?display_flash_message('danger')?>
                             <div class="panel-content">
                                 <div class="form-group">
-                                    <img src="img/demo/authors/josh.png" alt="" class="img-responsive" width="200">
+
+
+             <img src="img/demo/avatars/<?=$user_img?>" alt="" class="img-responsive" width="200">
+
                                 </div>
 
                                 <div class="form-group">
                                     <label class="form-label" for="example-fileinput">Выберите аватар</label>
-                                    <input type="file" id="example-fileinput" class="form-control-file">
+                                    <input type="file" id="example-fileinput" class="form-control-file" name="file" required>
                                 </div>
-
-
                                 <div class="col-md-12 mt-3 d-flex flex-row-reverse">
-                                    <button class="btn btn-warning">Загрузить</button>
+                                    <button class="btn btn-warning"  name="submit" >Загрузить</button>
                                 </div>
+
                             </div>
                         </div>
                     </div>

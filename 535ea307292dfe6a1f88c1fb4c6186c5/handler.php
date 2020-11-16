@@ -14,10 +14,6 @@ $instagram= $_POST['instagram'];
 $vk= $_POST['vk'];
 $status = $_POST['status'];
 
-
-
-
-addUser($email,$password);
 $user_id = addUser($email,$password);
 upload_avatar($image, $user_id);
 edit($username, $phone, $job_title, $address, $user_id);
@@ -25,5 +21,15 @@ add_social_links($telegram,$instagram,$vk,$user_id);
 set_status($status,$user_id);
 
 redirect_to("create_user.php");
+
+
+
+
+
+
+
+
+
+
 
 

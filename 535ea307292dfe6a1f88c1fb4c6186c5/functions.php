@@ -108,24 +108,57 @@ function addUser($email, $password)
             'pass' => $password
         ]);
 
-    $user_id = $connection->lastInsertId();
-    return $user_id;
+    return $connection->lastInsertId();
 }
 
 function upload_avatar($image,$user_id)
 {
-
     $connection = new PDO("mysql:host=localhost;dbname=datadb;charset=utf8", 'root', '');
     $fileTmpName = $_FILES['file']['tmp_name'];
     $fileName = $image;
-    $fileDestination = 'uploads/'.$fileName;
-    move_uploaded_file($fileTmpName,$fileDestination);
-    $query = $connection ->prepare("UPDATE creat_user SET img = :fileName WHERE id = :user_id");
-    $query->execute([
-        'fileName'=>$fileName,
-        'user_id'=>$user_id
-    ]);
+
+
+    $fileExtension = strtolower(end(explode('.', $fileName)));
+    $fileName = preg_replace('/[0-9]/', '', $fileName);
+    $fileName = explode('.',$fileName)[0];
+    $allowedExtension = ['jpg', 'jpeg', 'png'];
+
+    if (in_array($fileExtension, $allowedExtension)) {
+        $fileNameNew = $user_id.'-'.$fileName;
+        $query = $connection->prepare("UPDATE creat_user SET img = :img, img_extension = :fileExtension WHERE id = :user_id");
+        $query -> execute([
+            'img' => $fileNameNew,
+            'fileExtension' => $fileExtension,
+            'user_id' => $user_id,
+        ]);
+
+        $fileDestination = 'img/demo/avatars/'.$fileNameNew.'.'.$fileExtension;
+
+        move_uploaded_file($fileTmpName,$fileDestination);
+    }else{
+        $file_default_name = 'no_avatar';
+        $file_default_extension = "png";
+        $fileDefaultNew = $file_default_name.'.'.$file_default_extension;
+        $query = $connection->prepare("UPDATE creat_user SET img = :img, img_extension = :fileExtension WHERE id = :user_id");
+        $query -> execute([
+            'img' => $file_default_name,
+            'fileExtension' => $file_default_extension,
+            'user_id' => $user_id,
+        ]);
+    }
 }
+
+function has_image($user_id)
+{
+    $connection = new PDO("mysql:host=localhost;dbname=datadb;charset=utf8", 'root', '');
+    $query = $connection->prepare("SELECT * FROM creat_user WHERE id = :user_id");
+    $query->execute([
+        'user_id' => $user_id,
+    ]);
+    $query = $query->fetch();
+    return $default_img = $query['img'];
+
+}//default image
 
 function edit($username, $phone, $job_title, $address, $user_id)
 {

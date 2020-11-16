@@ -6,6 +6,7 @@ data_validation($email);
 $users = users_data();
 $user =  get_user_by_email($email);
 $admin = is_admin($user);
+$cardPath = 'img/demo/avatars/';
 ?>
 
 <!DOCTYPE html>
@@ -85,7 +86,7 @@ $admin = is_admin($user);
                         <div class="card-body border-faded border-top-0 border-left-0 border-right-0 rounded-top">
                             <div class="d-flex flex-row align-items-center">
                                 <span class="status status-<?=$card['status']?> mr-3">
-                                    <span class="rounded-circle profile-image d-block " style="background-image:url('<?=$card['img']?>'); background-size: cover;"></span>
+                                    <span class="rounded-circle profile-image d-block " style="background-image:url('<?=$cardPath.$card['img'].'.'.$card['img_extension']?>'); background-size: cover;"></span>
                                 </span>
                                 <div class="info-card-text flex-1">
                                     <?if($admin){?>
