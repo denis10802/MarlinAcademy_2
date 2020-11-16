@@ -15,7 +15,7 @@ if(isset($_POST['submit'])) {
     } else {
         $user_url = "media.php?id=$user_id";
         redirect_to("$user_url");
-        set_flash_message('danger', "Загрузите свою фотографию");
+        set_flash_message('warning', "Загрузите свою фотографию");
     }
 
 }

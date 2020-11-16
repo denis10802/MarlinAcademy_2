@@ -71,6 +71,7 @@ require("functions.php");
 
 
 
+
                                     <form id="js-login" novalidate="" action="register_connect.php" method="post">
                                         <div class="form-group">
                                             <label class="form-label" for="emailverify">Email</label>

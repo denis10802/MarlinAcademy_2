@@ -5,26 +5,18 @@ $email = $_SESSION['email'];
 $edit_user_id = $_GET["id"];
 $_SESSION['id'] = $_GET['id'];
 
-$connection = new PDO("mysql:host=localhost;dbname=datadb;charset=utf8",'root','');
-$logged_user_id = $connection->prepare("SELECT id FROM creat_user WHERE email= :email");
-$logged_user_id -> execute(['email'=>$email]);
-$logged_user_id = $logged_user_id->fetchColumn();
-
-$user =  $connection->prepare("SELECT role FROM creat_user WHERE email= :email");
-$user  -> execute(['email'=>$email]);
-$user = $user ->fetchColumn();
-
+$logged_user_id = get_logged_user_id($email);
+$user = user_role($email);
 $user_data = get_user_by_id($edit_user_id);
-
-if(!admin($user) ){
-    if(!is_author($edit_user_id,$logged_user_id)) {
-        redirect_to("users.php");
-        set_flash_message('danger', "Вы не можете редактировать чужой профиль, можно редактировать только свой профиль!");
-    }
-}
 
 $user_img = $user_data['img'].'.'.$user_data['img_extension'];
 
+if(!admin($user) ){
+    if(!is_author($edit_user_id,$logged_user_id)) {
+        set_flash_message('danger', "Вы не можете редактировать чужой профиль, можно редактировать только свой профиль!");
+        redirect_to("users.php");
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -74,7 +66,7 @@ $user_img = $user_data['img'].'.'.$user_data['img_extension'];
                             <div class="panel-hdr">
                                 <h2>Текущий аватар</h2>
                             </div>
-                            <?display_flash_message('danger')?>
+                            <?display_flash_message('warning')?>
                             <div class="panel-content">
                                 <div class="form-group">
 

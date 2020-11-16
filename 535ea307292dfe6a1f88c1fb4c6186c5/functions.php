@@ -98,6 +98,20 @@ function admin($user){
     return $user == 'admin';
 } // для редактирования пользователя
 
+function user_role($email){
+    $connection = new PDO("mysql:host=localhost;dbname=datadb;charset=utf8",'root','');
+    $user =  $connection->prepare("SELECT role FROM creat_user WHERE email= :email");
+    $user  -> execute(['email' => $email]);
+    return $user = $user ->fetchColumn();
+}
+
+function get_logged_user_id($email){
+    $connection = new PDO("mysql:host=localhost;dbname=datadb;charset=utf8",'root','');
+    $logged_user_id = $connection->prepare("SELECT id FROM creat_user WHERE email= :email");
+    $logged_user_id -> execute(['email'=>$email]);
+    return $logged_user_id = $logged_user_id->fetchColumn();
+}
+
 function addUser($email, $password)
 {
     $connection = new PDO("mysql:host=localhost;dbname=datadb;charset=utf8", 'root', '');
@@ -219,4 +233,10 @@ function user_id($email){
 function edit_credentials($user_id, $email, $pass){
     $connection = new PDO("mysql:host=localhost;dbname=datadb;charset=utf8",'root','');
     $connection ->query("UPDATE creat_user SET email = '$email',password = '$pass' WHERE id = '$user_id' ");
+}
+
+function delete_user($edit_user_id){
+    $connection = new PDO("mysql:host=localhost;dbname=datadb;charset=utf8",'root','');
+    $delete = $connection ->prepare("DELETE FROM creat_user WHERE id = :edit_user_id");
+    $delete->execute(['edit_user_id'=>$edit_user_id]);
 }
