@@ -1,7 +1,43 @@
 <?php
-$data = require('data.php');
-$dataBar = $data['progressBar'];
 
+$items = [
+    [
+        'title'=>'My Tasks',
+        'value' => '130 / 500',
+        'bg'=> 'bg-fusion-400',
+        'width' => '65%',
+        'valuenow'=>'65',
+        "valuemin"=>'0',
+        'valuemax'=>'100'
+    ],
+    [
+        'title'=>'Transfered',
+        'value' => '440 TB',
+        'bg'=> 'bg-success-500',
+        'width' => '34%',
+        'valuenow'=>'34',
+        "valuemin"=>'0',
+        'valuemax'=>'100'
+    ],
+    [
+        'title'=>'Bugs Squashed',
+        'value' => '77%',
+        'bg'=> 'bg-info-400',
+        'width' => '77%',
+        'valuenow'=>'77',
+        "valuemin"=>'0',
+        'valuemax'=>'100'
+    ],
+    [
+        'value'=>'User Testing',
+        'subtitle' => '7 days',
+        'bg'=> 'bg-primary-300',
+        'width' => '84%',
+        'valuenow'=>'84',
+        "valuemin"=>'0',
+        'valuemax'=>'100'
+    ],
+];
 
 ?>
 
@@ -15,14 +51,14 @@ $dataBar = $data['progressBar'];
         <meta name="description" content="Chartist.html">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, minimal-ui">
-        <link id="vendorsbundle" rel="stylesheet" media="screen, print" href="../css/vendors.bundle.css">
-        <link id="appbundle" rel="stylesheet" media="screen, print" href="../css/app.bundle.css">
-        <link id="myskin" rel="stylesheet" media="screen, print" href="../css/skins/skin-master.css">
-        <link rel="stylesheet" media="screen, print" href="../css/statistics/chartist/chartist.css">
-        <link rel="stylesheet" media="screen, print" href="../css/miscellaneous/lightgallery/lightgallery.bundle.css">
-        <link rel="stylesheet" media="screen, print" href="../css/fa-solid.css">
-        <link rel="stylesheet" media="screen, print" href="../css/fa-brands.css">
-        <link rel="stylesheet" media="screen, print" href="../css/fa-regular.css">
+        <link id="vendorsbundle" rel="stylesheet" media="screen, print" href="css/vendors.bundle.css">
+        <link id="appbundle" rel="stylesheet" media="screen, print" href="css/app.bundle.css">
+        <link id="myskin" rel="stylesheet" media="screen, print" href="css/skins/skin-master.css">
+        <link rel="stylesheet" media="screen, print" href="css/statistics/chartist/chartist.css">
+        <link rel="stylesheet" media="screen, print" href="css/miscellaneous/lightgallery/lightgallery.bundle.css">
+        <link rel="stylesheet" media="screen, print" href="css/fa-solid.css">
+        <link rel="stylesheet" media="screen, print" href="css/fa-brands.css">
+        <link rel="stylesheet" media="screen, print" href="css/fa-regular.css">
     </head>
     <body class="mod-bg-1 mod-nav-link ">
         <main id="js-page-content" role="main" class="page-content">
@@ -39,13 +75,13 @@ $dataBar = $data['progressBar'];
                     </div>
                     <div class="panel-container show">
                         <div class="panel-content">
-                            <?foreach ($dataBar as $value){?>
+                            <?foreach ($items as $item){?>
                             <div class="d-flex mt-2">
-                                <?=$value['title']?>
-                                <span class="d-inline-block ml-auto"> <?=$value['subtitle']?></span>
+                                <?=$item['title']?>
+                                <span class="d-inline-block ml-auto"> <?=$item['value']?></span>
                             </div>
                             <div class="progress progress-sm mb-3">
-                                <div class="progress-bar <?=$value['bg']?>" role="progressbar" style="width:  <?=$value['width']?>;" aria-valuenow="<?=$value['valuenow']?>" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div class="progress-bar <?=$item['bg']?>" role="progressbar" style="width:  <?=$item['width']?>;" aria-valuenow="<?=$item['valuenow']?>" aria-valuemin="<?=$item['valuemin']?>" aria-valuemax="<?=$item['valuemax']?>"></div>
                             </div>
                             <?}?>
                         </div>

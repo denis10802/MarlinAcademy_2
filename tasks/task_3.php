@@ -1,8 +1,24 @@
 
 
 <?php
-$data = require('data.php');
-$link = $data['links'];
+
+$links = [
+    [
+        'title'=>'Главная',
+        'href'=> '#',
+        'is_link'=>true,
+    ],
+    [
+        'title'=>'PHP',
+        'href'=> '#',
+        'is_link'=>true,
+    ],
+    [
+        'title'=>'Главная',
+        'href'=> '',
+        'is_link'=>false,
+    ],
+];
 
 
 ?>
@@ -41,9 +57,9 @@ $link = $data['links'];
                     <div class="panel-container show">
                         <div class="panel-content">
                             <ol class="breadcrumb page-breadcrumb">
-                                <?foreach ($link as $links){?>
-                                    <?if($links['is_link']){?>
-                                <li class="breadcrumb-item"><a href="<?=$links['href']?>"><?=$links['title']?></a></li>
+                                <?foreach ($links as $link){?>
+                                    <?if($link['is_link']){?>
+                                <li class="breadcrumb-item"><a href="<?=$link['href']?>"><?=$link['title']?></a></li>
                                 <?}else{?>
                                         <li class="breadcrumb-item active"><?=$links['title']?></li>
                                      <?}?>

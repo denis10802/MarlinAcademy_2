@@ -1,8 +1,9 @@
 <?php
-$connect = new PDO('mysql:host=localhost;dbname=datadb;charset=utf8','root','');
-$dataCard = $connect -> prepare("SELECT * FROM cards_data");
-$dataCard -> execute();
-$dataCard = $dataCard->fetchAll();
+$pdo = new PDO('mysql:host=localhost;dbname=datadb;charset=utf8','root','');
+$sql="SELECT * FROM people";
+$statement = $pdo -> prepare($sql);
+$statement -> execute();
+$people = $statement->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 
@@ -17,14 +18,14 @@ $dataCard = $dataCard->fetchAll();
         <meta name="description" content="Chartist.html">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, minimal-ui">
-        <link id="vendorsbundle" rel="stylesheet" media="screen, print" href="../css/vendors.bundle.css">
-        <link id="appbundle" rel="stylesheet" media="screen, print" href="../css/app.bundle.css">
-        <link id="myskin" rel="stylesheet" media="screen, print" href="../css/skins/skin-master.css">
-        <link rel="stylesheet" media="screen, print" href="../css/statistics/chartist/chartist.css">
-        <link rel="stylesheet" media="screen, print" href="../css/miscellaneous/lightgallery/lightgallery.bundle.css">
-        <link rel="stylesheet" media="screen, print" href="../css/fa-solid.css">
-        <link rel="stylesheet" media="screen, print" href="../css/fa-brands.css">
-        <link rel="stylesheet" media="screen, print" href="../css/fa-regular.css">
+        <link id="vendorsbundle" rel="stylesheet" media="screen, print" href="css/vendors.bundle.css">
+        <link id="appbundle" rel="stylesheet" media="screen, print" href="css/app.bundle.css">
+        <link id="myskin" rel="stylesheet" media="screen, print" href="css/skins/skin-master.css">
+        <link rel="stylesheet" media="screen, print" href="css/statistics/chartist/chartist.css">
+        <link rel="stylesheet" media="screen, print" href="css/miscellaneous/lightgallery/lightgallery.bundle.css">
+        <link rel="stylesheet" media="screen, print" href="css/fa-solid.css">
+        <link rel="stylesheet" media="screen, print" href="css/fa-brands.css">
+        <link rel="stylesheet" media="screen, print" href="css/fa-regular.css">
     </head>
     <body class="mod-bg-1 mod-nav-link ">
         <main id="js-page-content" role="main" class="page-content">
@@ -42,22 +43,22 @@ $dataCard = $dataCard->fetchAll();
                     <div class="panel-container show">
                         <div class="panel-content">
                            <div class="d-flex flex-wrap demo demo-h-spacing mt-3 mb-3">
-                               <?foreach($dataCard as $dataCards){?>
-                                   <div class="<?if($dataCards['status'] != 'banned') echo ''; else echo 'banned'; ?> rounded-pill bg-white shadow-sm p-2 border-faded mr-3 d-flex flex-row align-items-center justify-content-center flex-shrink-0">
-                                       <img src="<?=$dataCards['img']?>" alt="<?=$dataCards['imgALT']?>" class="img-thumbnail img-responsive rounded-circle" style="width:5rem; height: 5rem;">
+                               <? foreach($people as $person): ?>
+                                   <div class="<?if($person['status'] != 'banned') echo ''; else echo 'banned'; ?> rounded-pill bg-white shadow-sm p-2 border-faded mr-3 d-flex flex-row align-items-center justify-content-center flex-shrink-0">
+                                       <img src="<?=$person['image']?>" alt="<?=$person['image_alt']?>" class="img-thumbnail img-responsive rounded-circle" style="width:5rem; height: 5rem;">
                                        <div class="ml-2 mr-3">
                                            <h5 class="m-0">
-                                               <?=$dataCards['name']?>
+                                               <?=$person['name']?>
                                                <small class="m-0 fw-300">
-                                                   <?=$dataCards['position']?>
+                                                   <?=$person['job_title']?>
                                                </small>
                                            </h5>
-                                           <a href="<?=$dataCards['email']?>" class="text-info fs-sm" target="_blank"><?=$dataCards['link']?></a> -
-                                           <a href="<?=$dataCards['hrefBoot']?>" class="text-info fs-sm" target="_blank" title="<?=$dataCards['HrefTitle']?>"><i class="fal fa-envelope"></i></a>
+                                           <a href="<?=$person['twitter_link_href']?>" class="text-info fs-sm" target="_blank"><?=$person['twitter_link_text']?></a> -
+                                           <a href="<?=$person['email_link_href']?>" class="text-info fs-sm" target="_blank" title="<?=$person['email_link_title']?>"><?=$person['email_link_text']?></a>
                                        </div>
                                    </div>
 
-                               <?}?>
+                               <?endforeach;?>
                         </div>
                         </div>
                     </div>

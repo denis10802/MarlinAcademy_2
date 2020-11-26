@@ -1,6 +1,23 @@
 <?php
-$data = require('data.php');
-$item = $data['group-item'];
+
+$items = [
+    [
+        'tag'=>'reports file',
+        'title'=>'Reports'
+    ],
+    [
+        'tag'=>'analytics graphs',
+        'title'=>'Analytics'
+    ],
+    [
+        'tag'=>'export download',
+        'title'=>'Export'
+    ],
+    [
+        'tag'=>'storage',
+        'title'=>'Storage'
+    ]
+];
 
 
 ?>
@@ -16,14 +33,14 @@ $item = $data['group-item'];
         <meta name="description" content="Chartist.html">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, minimal-ui">
-        <link id="vendorsbundle" rel="stylesheet" media="screen, print" href="../css/vendors.bundle.css">
-        <link id="appbundle" rel="stylesheet" media="screen, print" href="../css/app.bundle.css">
-        <link id="myskin" rel="stylesheet" media="screen, print" href="../css/skins/skin-master.css">
-        <link rel="stylesheet" media="screen, print" href="../css/statistics/chartist/chartist.css">
-        <link rel="stylesheet" media="screen, print" href="../css/miscellaneous/lightgallery/lightgallery.bundle.css">
-        <link rel="stylesheet" media="screen, print" href="../css/fa-solid.css">
-        <link rel="stylesheet" media="screen, print" href="../css/fa-brands.css">
-        <link rel="stylesheet" media="screen, print" href="../css/fa-regular.css">
+        <link id="vendorsbundle" rel="stylesheet" media="screen, print" href="css/vendors.bundle.css">
+        <link id="appbundle" rel="stylesheet" media="screen, print" href="css/app.bundle.css">
+        <link id="myskin" rel="stylesheet" media="screen, print" href="css/skins/skin-master.css">
+        <link rel="stylesheet" media="screen, print" href="css/statistics/chartist/chartist.css">
+        <link rel="stylesheet" media="screen, print" href="css/miscellaneous/lightgallery/lightgallery.bundle.css">
+        <link rel="stylesheet" media="screen, print" href="css/fa-solid.css">
+        <link rel="stylesheet" media="screen, print" href="css/fa-brands.css">
+        <link rel="stylesheet" media="screen, print" href="css/fa-regular.css">
     </head>
     <body class="mod-bg-1 mod-nav-link ">
         <main id="js-page-content" role="main" class="page-content">
@@ -52,10 +69,10 @@ $item = $data['group-item'];
                                         </div>
                                     </div>
                                     <ul id="js-list-msg" class="list-group px-2 pb-2 js-list-filter">
-                                        <?foreach ($item as $items) {?>
+                                        <?foreach ($items as $item) {?>
 
                                         <li class="list-group-item">
-                                            <span data-filter-tags="<?=$items['tag']?>"><?=$items['title']?></span>
+                                            <span data-filter-tags="<?=$item['tag']?>"><?=$item['title']?></span>
                                         </li>
                                         <?}?>
                                     </ul>
