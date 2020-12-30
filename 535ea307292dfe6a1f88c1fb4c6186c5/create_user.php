@@ -43,7 +43,7 @@ require ('functions.php');
                 <i class='subheader-icon fal fa-plus-circle'></i> Добавить пользователя
             </h1>
 
-
+            <?display_flash_message('danger')?>
 
         </div>
         <form action="handler.php"  method="POST" enctype="multipart/form-data">

@@ -86,6 +86,7 @@ $cardPath = 'img/demo/avatars/';
                         <div class="card-body border-faded border-top-0 border-left-0 border-right-0 rounded-top">
                             <div class="d-flex flex-row align-items-center">
                                 <span class="status status-<?=$card['status']?> mr-3">
+                                     <a href="page_profile.php?id=<?php echo $card['id'];?>">
                                     <span class="rounded-circle profile-image d-block " style="background-image:url('<?=$cardPath.$card['img'].'.'.$card['img_extension']?>'); background-size: cover;"></span>
                                 </span>
                                 <div class="info-card-text flex-1">

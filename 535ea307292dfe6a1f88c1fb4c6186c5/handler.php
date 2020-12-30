@@ -14,6 +14,11 @@ $instagram= $_POST['instagram'];
 $vk= $_POST['vk'];
 $status = $_POST['status'];
 
+if (get_user_by_email($email)){
+    set_flash_message("danger", "Этот эл. адрес уже используется.");
+    redirect_to("create_user.php");
+}
+
 $user_id = addUser($email,$password);
 upload_avatar($image, $user_id);
 edit($username, $phone, $job_title, $address, $user_id);
